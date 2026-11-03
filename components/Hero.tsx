@@ -275,12 +275,12 @@ export default function Hero({ onDownloadResume }: HeroProps) {
 
         {/* 4. Large Interactive Tools & Competencies Pyramid (Triangle Layout: 3 / 2 / 1) */}
         <div className="border-t border-slate-800/80 pt-12 mt-6">
-          <div className="text-center max-w-2xl mx-auto mb-8">
+          <div className="text-center max-w-4xl mx-auto mb-8 px-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>CORE TECHNICAL COMPETENCIES</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight sm:whitespace-nowrap">
               เครื่องมือ &amp; ความเชี่ยวชาญหลัก (Tools &amp; Capabilities)
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
