@@ -41,14 +41,16 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </button>
 
         {/* Modal Header */}
-        <div className="flex items-center gap-3 mb-6 print:hidden">
-          <div className="p-3 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white">
-            <FileText className="w-6 h-6" />
-          </div>
+        <div className="flex items-center gap-3.5 mb-6 print:hidden">
+          <img
+            src="/profile.jpg"
+            alt={personal.name}
+            className="w-12 h-12 rounded-xl object-cover object-top border-2 border-sky-400/40 shadow-md"
+          />
           <div>
             <h3 className="text-xl font-bold text-white">ประวัติย่อ / Online Resume Preview</h3>
             <p className="text-xs text-slate-400">
-              {personal.name} — {personal.titles[0]}
+              {personal.name} ({personal.englishName}) — {personal.titles[0]}
             </p>
           </div>
         </div>
@@ -73,17 +75,24 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         <div className="p-6 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-6 text-slate-300 text-xs sm:text-sm print:bg-white print:text-black print:p-0 print:border-none">
           {/* Header Info */}
           <div className="border-b border-slate-800 pb-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-                  {personal.name}
-                </h2>
-                <p className="text-xs sm:text-sm font-medium text-slate-400 font-mono mt-0.5">
-                  {personal.englishName}
-                </p>
-                <p className="text-sm font-semibold text-sky-400 mt-1">
-                  {personal.titles.join(" | ")}
-                </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <img
+                  src="/profile.jpg"
+                  alt={personal.name}
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover object-top border-2 border-sky-400 shadow-md shrink-0"
+                />
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                    {personal.name}
+                  </h2>
+                  <p className="text-xs sm:text-sm font-medium text-slate-400 font-mono mt-0.5">
+                    {personal.englishName}
+                  </p>
+                  <p className="text-sm font-semibold text-sky-400 mt-1">
+                    {personal.titles.join(" | ")}
+                  </p>
+                </div>
               </div>
               <div className="text-left sm:text-right space-y-1 font-mono text-xs text-slate-300">
                 <div className="flex sm:justify-end items-center gap-1.5">
@@ -109,7 +118,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <h4 className="font-bold text-white text-xs uppercase tracking-wider mb-2 text-indigo-400 font-mono">
               เกี่ยวกับฉัน (About Me)
             </h4>
-            <p className="text-slate-300 leading-relaxed text-xs sm:text-sm bg-slate-950/40 p-3 rounded-xl border border-slate-800/60">
+            <p className="text-slate-300 leading-relaxed text-xs sm:text-sm bg-slate-950/40 p-3 rounded-xl border border-slate-800/60 font-light">
               {personal.bio}
             </p>
           </div>
