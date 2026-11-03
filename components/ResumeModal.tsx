@@ -72,168 +72,184 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
         </div>
 
-        {/* Printable Resume Sheet */}
-        <div className="resume-print-sheet p-6 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-6 text-slate-300 text-xs sm:text-sm print:space-y-3.5 print:text-slate-900 print:p-0 print:border-none print:bg-white">
+        {/* =========================================================================
+            PRINTABLE RESUME SHEETS (Explicit 2cm Page 1 & Page 2 Architecture)
+           ========================================================================= */}
+        <div className="resume-print-sheet bg-slate-900/60 rounded-xl border border-slate-800/80 print:bg-white print:border-none">
           
-          {/* ================= PAGE 1 ================= */}
-          
-          {/* Header Info */}
-          <div className="border-b border-slate-800 pb-5 print:border-b-2 print:border-slate-300 print:pb-3.5 print-avoid-break">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <img
-                  src="/profile.jpg"
-                  alt={personal.name}
-                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover object-top border-2 border-sky-400 shadow-md shrink-0 print:w-20 print:h-20 print:rounded-xl print:border-slate-400"
-                />
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white print:text-slate-900 print:text-2xl">
-                    {personal.englishName}
-                  </h1>
-                  <p className="text-sm sm:text-base font-semibold text-sky-400 print:text-indigo-800 mt-0.5 print:text-sm">
-                    {personal.thaiName}
-                  </p>
-                  <p className="text-xs sm:text-sm font-medium text-slate-300 print:text-slate-600 mt-1 print:text-xs">
-                    {personal.titles.join(" | ")}
-                  </p>
-                </div>
-              </div>
-
-              {/* Contact Details (Clean stacking in print) */}
-              <div className="text-left sm:text-right space-y-1 font-mono text-xs text-slate-300 print:text-slate-800 shrink-0">
-                <div className="flex sm:justify-end items-center gap-1.5 font-bold">
-                  <Phone className="w-3.5 h-3.5 text-emerald-400 print:text-emerald-700" />
-                  <span>{personal.phone}</span>
-                </div>
-                <div className="flex sm:justify-end items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
-                  <span>{personal.email}</span>
-                </div>
-                <div className="flex sm:justify-end items-center gap-1.5 text-[11px] text-slate-400 print:text-slate-600">
-                  <MapPin className="w-3 h-3 text-indigo-400 print:text-indigo-700" />
-                  <span>ขอนแก่น / กรุงเทพฯ (พร้อมเริ่มงาน)</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Availability Banner */}
-            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 print:bg-emerald-50 print:border print:border-emerald-200 print:text-emerald-900 text-xs">
-              <MapPin className="w-3.5 h-3.5 print:text-emerald-700" />
-              <span>{personal.location}</span>
-            </div>
-          </div>
-
-          {/* About Me / Summary */}
-          <div className="print-avoid-break">
-            <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-1.5 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
-              <span>เกี่ยวกับฉัน (About Me)</span>
-            </h2>
-            <p className="text-slate-300 print:text-slate-700 leading-relaxed text-xs sm:text-sm bg-slate-950/40 print:bg-slate-50 print:border print:border-slate-200 p-3 print:p-2.5 rounded-xl print:rounded-lg">
-              {personal.bio}
-            </p>
-          </div>
-
-          {/* Work Experience */}
-          <div className="space-y-2.5">
-            <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-1.5 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
-              <span>ประสบการณ์ทำงาน (Work Experience)</span>
-            </h2>
-            <div className="space-y-2.5 print:space-y-2">
-              {experience.map((exp) => (
-                <div
-                  key={exp.id}
-                  className="p-3.5 print:p-2.5 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 print-avoid-break"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-0.5">
-                    <span className="font-bold text-white print:text-slate-900 text-sm">{exp.role}</span>
-                    <span className="font-mono text-xs text-sky-400 print:text-sky-800 font-semibold">{exp.period}</span>
+          {/* ============================= PAGE 1 ============================= */}
+          <div className="print-page-1 p-6 sm:p-8 space-y-5 print:space-y-3.5 text-slate-300 text-xs sm:text-sm print:text-slate-900">
+            
+            {/* Header Info */}
+            <div className="border-b border-slate-800 pb-4 print:border-b-2 print:border-slate-300 print:pb-3 print-avoid-break">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-4">
+                  <img
+                    src="/profile.jpg"
+                    alt={personal.name}
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover object-top border-2 border-sky-400 shadow-md shrink-0 print:w-16 print:h-16 print:rounded-xl print:border-slate-400"
+                  />
+                  <div>
+                    <h1 className="text-2xl sm:text-3xl font-extrabold text-white print:text-slate-900 print:text-xl">
+                      {personal.englishName}
+                    </h1>
+                    <p className="text-sm sm:text-base font-semibold text-sky-400 print:text-indigo-800 mt-0.5 print:text-sm">
+                      {personal.thaiName}
+                    </p>
+                    <p className="text-xs font-medium text-slate-300 print:text-slate-600 mt-0.5 print:text-[11px]">
+                      {personal.titles.join(" | ")}
+                    </p>
                   </div>
-                  <p className="text-xs text-indigo-300 print:text-indigo-700 font-medium mb-1.5">
-                    {exp.company} — {exp.location} ({exp.type})
-                  </p>
-                  <ul className="space-y-1 text-xs text-slate-300 print:text-slate-700">
-                    {exp.achievements.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 print:text-emerald-700 shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Education */}
-          <div className="print-avoid-break pt-1">
-            <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-1.5 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
-              <span>ประวัติการศึกษา (Education)</span>
-            </h2>
-            <div className="p-3 print:p-2.5 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div>
-                <p className="font-bold text-white print:text-slate-900 text-sm">{personal.education.degree}</p>
-                <p className="text-xs text-slate-300 print:text-slate-600 mt-0.5">
-                  {personal.education.faculty} {personal.education.university}
-                </p>
+                {/* Contact Details (Clean stacking without line break cutoff) */}
+                <div className="text-left sm:text-right space-y-1 font-mono text-xs text-slate-300 print:text-slate-800 shrink-0">
+                  <div className="flex sm:justify-end items-center gap-1.5 font-bold">
+                    <Phone className="w-3.5 h-3.5 text-emerald-400 print:text-emerald-700" />
+                    <span>{personal.phone}</span>
+                  </div>
+                  <div className="flex sm:justify-end items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
+                    <span>{personal.email}</span>
+                  </div>
+                  <div className="flex sm:justify-end items-center gap-1.5 text-[11px] text-slate-400 print:text-slate-600">
+                    <MapPin className="w-3 h-3 text-indigo-400 print:text-indigo-700" />
+                    <span>ขอนแก่น / กรุงเทพฯ (พร้อมเริ่มงาน)</span>
+                  </div>
+                </div>
               </div>
-              <div className="text-left sm:text-right">
-                <span className="inline-block px-2.5 py-0.5 rounded-md bg-sky-500/15 print:bg-sky-100 text-sky-300 print:text-sky-800 border border-sky-500/30 print:border-sky-300 font-mono text-xs font-semibold">
-                  {personal.education.gpa}
-                </span>
-                <p className="text-[11px] text-slate-400 print:text-slate-600 mt-0.5">{personal.education.graduationYear}</p>
+
+              {/* Availability Banner */}
+              <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 print:bg-emerald-50 print:border print:border-emerald-200 print:text-emerald-900 text-xs print:text-[10px]">
+                <MapPin className="w-3.5 h-3.5 print:text-emerald-700" />
+                <span>{personal.location}</span>
               </div>
             </div>
-          </div>
 
-          {/* ================= PAGE 2 (Starts cleanly on Page 2 in Print) ================= */}
+            {/* About Me / Summary */}
+            <div className="print-avoid-break">
+              <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-1 text-indigo-400 print:text-indigo-800 font-mono">
+                เกี่ยวกับฉัน (About Me)
+              </h2>
+              <p className="text-slate-300 print:text-slate-700 leading-relaxed text-xs sm:text-sm print:text-[11px] bg-slate-950/40 print:bg-slate-50 print:border print:border-slate-200 p-2.5 rounded-xl print:rounded-lg">
+                {personal.bio}
+              </p>
+            </div>
 
-          {/* Skills Summary (Forced to Page 2 in Print) */}
-          <div className="print-page-break print:pt-4">
-            <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
-              <span>ทักษะความสามารถ (Skills &amp; Competencies)</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 print:gap-2.5">
-              {skills.map((cat) => (
-                <div
-                  key={cat.title}
-                  className="p-3.5 print:p-3 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 print-avoid-break"
-                >
-                  <p className="font-bold text-slate-200 print:text-slate-900 text-xs mb-1.5 pb-1 border-b border-slate-800 print:border-slate-200">
-                    {cat.title}
+            {/* Work Experience */}
+            <div className="space-y-2">
+              <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-1 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
+                <Briefcase className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
+                <span>ประสบการณ์ทำงาน (Work Experience)</span>
+              </h2>
+              <div className="space-y-2 print:space-y-1.5">
+                {experience.map((exp) => (
+                  <div
+                    key={exp.id}
+                    className="p-3 print:p-2 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 print-avoid-break"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-0.5">
+                      <span className="font-bold text-white print:text-slate-900 text-xs sm:text-sm print:text-xs">
+                        {exp.role}
+                      </span>
+                      <span className="font-mono text-xs text-sky-400 print:text-sky-800 font-semibold print:text-[11px]">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-indigo-300 print:text-indigo-700 font-medium mb-1">
+                      {exp.company} — {exp.location} ({exp.type})
+                    </p>
+                    <ul className="space-y-0.5 text-xs print:text-[10px] text-slate-300 print:text-slate-700">
+                      {exp.achievements.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-400 print:text-emerald-700 shrink-0 mt-0.5" />
+                          <span className="leading-snug">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Education */}
+            <div className="print-avoid-break pt-0.5">
+              <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-1 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
+                <GraduationCap className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
+                <span>ประวัติการศึกษา (Education)</span>
+              </h2>
+              <div className="p-2.5 print:p-2 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <p className="font-bold text-white print:text-slate-900 text-xs sm:text-sm print:text-xs">
+                    {personal.education.degree}
                   </p>
-                  <p className="text-[11px] text-slate-400 print:text-slate-700 leading-relaxed">
-                    {cat.skills.map((s) => s.name).join(", ")}
+                  <p className="text-xs text-slate-300 print:text-slate-600 mt-0.5 print:text-[11px]">
+                    {personal.education.faculty} {personal.education.university}
                   </p>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Certifications & Achievements (on Page 2) */}
-          <div className="print-avoid-break mt-4 print:mt-4">
-            <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-amber-400 print:text-amber-700" />
-              <span>ใบรับรองและผลงาน (Certifications &amp; Achievements)</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 print:gap-2.5">
-              {certifications.map((cert, idx) => (
-                <div
-                  key={idx}
-                  className="p-3 print:p-2.5 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 print-avoid-break"
-                >
-                  <p className="font-bold text-white print:text-slate-900 text-xs">{cert.title}</p>
-                  <p className="text-[10px] text-sky-400 print:text-sky-800 font-mono mt-0.5">{cert.issuer}</p>
-                  <p className="text-[11px] text-slate-400 print:text-slate-600 mt-1 leading-relaxed">{cert.description}</p>
+                <div className="text-left sm:text-right">
+                  <span className="inline-block px-2 py-0.5 rounded-md bg-sky-500/15 print:bg-sky-100 text-sky-300 print:text-sky-800 border border-sky-500/30 print:border-sky-300 font-mono text-xs font-semibold print:text-[10px]">
+                    {personal.education.gpa}
+                  </span>
+                  <p className="text-[10px] text-slate-400 print:text-slate-600 mt-0.5">{personal.education.graduationYear}</p>
                 </div>
-              ))}
+              </div>
             </div>
+
           </div>
 
-          {/* Professional Endorsement Note at the bottom of Page 2 */}
-          <div className="hidden print:block text-center pt-8 border-t border-slate-200 text-[10px] text-slate-600 font-mono">
-            <span>MR. Kittisak Sappaso (095-304-4906) — พร้อมแนบเอกสารรับรองและบุคคลอ้างอิงเมื่อได้รับการร้องขอ</span>
+          {/* ============================= PAGE 2 ============================= */}
+          <div className="print-page-2 p-6 sm:p-8 space-y-5 print:space-y-4 text-slate-300 text-xs sm:text-sm print:text-slate-900 border-t border-slate-800/80 print:border-none">
+            
+            {/* Skills Summary (Page 2 Header) */}
+            <div className="print-avoid-break">
+              <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
+                <span>ทักษะความสามารถ (Skills &amp; Competencies)</span>
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 print:gap-2.5">
+                {skills.map((cat) => (
+                  <div
+                    key={cat.title}
+                    className="p-3.5 print:p-2.5 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 print-avoid-break"
+                  >
+                    <p className="font-bold text-slate-200 print:text-slate-900 text-xs mb-1.5 pb-1 border-b border-slate-800 print:border-slate-200">
+                      {cat.title}
+                    </p>
+                    <p className="text-[11px] text-slate-400 print:text-slate-700 leading-relaxed print:text-[10px]">
+                      {cat.skills.map((s) => s.name).join(", ")}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications & Achievements */}
+            <div className="print-avoid-break mt-4 print:mt-3">
+              <h2 className="font-bold text-white print:text-slate-900 text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
+                <Award className="w-3.5 h-3.5 text-amber-400 print:text-amber-700" />
+                <span>ใบรับรองและผลงาน (Certifications &amp; Achievements)</span>
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 print:gap-2.5">
+                {certifications.map((cert, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3 print:p-2.5 rounded-xl print:rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-200 print-avoid-break"
+                  >
+                    <p className="font-bold text-white print:text-slate-900 text-xs">{cert.title}</p>
+                    <p className="text-[10px] text-sky-400 print:text-sky-800 font-mono mt-0.5">{cert.issuer}</p>
+                    <p className="text-[11px] text-slate-400 print:text-slate-600 mt-1 leading-relaxed print:text-[10px]">
+                      {cert.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Professional Endorsement Note at the bottom of Page 2 */}
+            <div className="hidden print:block text-center pt-8 mt-8 border-t border-slate-200 text-[10px] text-slate-600 font-mono">
+              <span>{personal.englishName} ({personal.phone}) — เอกสารประวัติการทำงาน (Official Online Resume)</span>
+            </div>
+
           </div>
 
         </div>

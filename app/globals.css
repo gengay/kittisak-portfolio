@@ -61,8 +61,8 @@
 /* Dedicated Clean Print Styles with Guaranteed 2cm Margins */
 @media print {
   @page {
-    /* 2cm (20mm) exact margin on Top, Bottom, Left, and Right */
-    margin: 20mm !important;
+    /* Set margin to 0 and let container enforce exact 20mm padding */
+    margin: 0 !important;
     size: A4 portrait;
   }
 
@@ -90,21 +90,7 @@
     overflow: hidden !important;
   }
 
-  /* Force clean page break */
-  .print-page-break {
-    break-before: page !important;
-    page-break-before: always !important;
-    margin-top: 0 !important;
-    padding-top: 4mm !important;
-  }
-
-  /* Prevent card splitting */
-  .print-avoid-break {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  /* Unconstrain modal wrapper */
+  /* Modal Wrapper cleanup */
   .resume-modal-backdrop {
     position: static !important;
     display: block !important;
@@ -127,23 +113,32 @@
     max-height: none !important;
     overflow: visible !important;
     background: #ffffff !important;
-    color: #0f172a !important;
-    box-shadow: none !important;
     border: none !important;
+    box-shadow: none !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  .resume-print-sheet {
-    background: #ffffff !important;
-    color: #0f172a !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    display: block !important;
-    width: 100% !important;
+  /* Print Pages: Enforce EXACT 20mm (2 cm) padding on all 4 sides */
+  .print-page-1,
+  .print-page-2 {
     box-sizing: border-box !important;
-    overflow: visible !important;
-    box-shadow: none !important;
+    padding: 20mm 20mm !important; /* 2cm exact: Top/Bottom, Left/Right */
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    display: block !important;
+  }
+
+  .print-page-2 {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Prevent card splitting */
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 }
