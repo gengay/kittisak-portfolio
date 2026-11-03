@@ -61,7 +61,8 @@
 /* Dedicated Clean Print Styles */
 @media print {
   @page {
-    margin: 12mm 14mm;
+    /* 2cm margin on all 4 sides (Top, Bottom, Left, Right) */
+    margin: 2cm;
     size: A4 portrait;
   }
 
@@ -70,6 +71,8 @@
     color: #0f172a !important;
     overflow: visible !important;
     font-family: "Plus Jakarta Sans", "Prompt", -apple-system, BlinkMacSystemFont, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* Hide entire page structure to prevent duplicates */
@@ -82,6 +85,18 @@
     visibility: hidden !important;
     height: 0 !important;
     overflow: hidden !important;
+  }
+
+  /* Force page break before an element */
+  .print-page-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Prevent card from being split across page boundaries */
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 
   /* Unconstrain modal wrapper so all pages print without cutoff */
@@ -118,9 +133,11 @@
     background: #ffffff !important;
     color: #0f172a !important;
     padding: 0 !important;
+    margin: 0 !important;
     border: none !important;
     display: block !important;
     overflow: visible !important;
+    box-shadow: none !important;
   }
 
   * {

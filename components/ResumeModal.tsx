@@ -4,7 +4,6 @@ import React from "react";
 import {
   X,
   Printer,
-  FileText,
   Phone,
   Mail,
   MapPin,
@@ -31,7 +30,8 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
   return (
     <div className="resume-modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="resume-modal-dialog glass-card max-w-4xl w-full rounded-2xl p-6 sm:p-8 border border-slate-700 bg-slate-950 shadow-2xl relative my-6 max-h-[92vh] overflow-y-auto">
+      <div className="resume-modal-dialog glass-card max-w-4xl w-full rounded-2xl p-6 sm:p-8 border border-slate-700 bg-slate-950 shadow-2xl relative my-6 max-h-[92vh] overflow-y-auto print:max-h-none print:overflow-visible print:border-none print:shadow-none print:p-0 print:m-0 print:bg-white">
+        
         {/* Close Button (Hidden in Print) */}
         <button
           onClick={onClose}
@@ -72,11 +72,13 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
         </div>
 
-        {/* Printable Resume Sheet (Visible and Formatted for both Screen & Print) */}
-        <div className="resume-print-sheet p-6 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-6 text-slate-300 text-xs sm:text-sm print:space-y-4 print:text-black">
+        {/* Printable Resume Sheet */}
+        <div className="resume-print-sheet p-6 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-6 text-slate-300 text-xs sm:text-sm print:space-y-4 print:text-black print:p-0 print:border-none print:bg-white">
+          
+          {/* ================= PAGE 1 ================= */}
           
           {/* Header Info */}
-          <div className="border-b border-slate-800 pb-5 print:border-slate-300 print:pb-4">
+          <div className="border-b border-slate-800 pb-5 print:border-slate-300 print:pb-4 print-avoid-break">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <img
@@ -88,7 +90,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <h1 className="text-2xl sm:text-3xl font-extrabold text-white print:text-black">
                     {personal.englishName}
                   </h1>
-                  <p className="text-sm sm:text-base font-semibold text-sky-400 print:text-indigo-700 mt-0.5">
+                  <p className="text-sm sm:text-base font-semibold text-sky-400 print:text-indigo-800 mt-0.5">
                     {personal.thaiName}
                   </p>
                   <p className="text-xs sm:text-sm font-medium text-slate-300 print:text-slate-700 mt-1">
@@ -113,15 +115,15 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
 
             {/* Availability Banner */}
-            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 print:bg-emerald-50 print:border-emerald-300 print:text-emerald-800 text-xs">
+            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 print:bg-emerald-50 print:border-emerald-300 print:text-emerald-900 text-xs">
               <MapPin className="w-3.5 h-3.5" />
               <span>{personal.location}</span>
             </div>
           </div>
 
           {/* About Me / Summary */}
-          <div>
-            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-700 font-mono">
+          <div className="print-avoid-break">
+            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono">
               เกี่ยวกับฉัน (About Me)
             </h2>
             <p className="text-slate-300 print:text-slate-800 leading-relaxed text-xs sm:text-sm bg-slate-950/40 print:bg-slate-50 p-3 rounded-xl border border-slate-800/60 print:border-slate-200">
@@ -130,17 +132,20 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
 
           {/* Work Experience */}
-          <div>
-            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-3 text-indigo-400 print:text-indigo-700 font-mono flex items-center gap-1.5">
+          <div className="space-y-3">
+            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
               <Briefcase className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
               <span>ประสบการณ์ทำงาน (Work Experience)</span>
             </h2>
             <div className="space-y-3.5 print:space-y-3">
               {experience.map((exp) => (
-                <div key={exp.id} className="p-4 rounded-xl bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-300">
+                <div
+                  key={exp.id}
+                  className="p-4 rounded-xl bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-300 print-avoid-break"
+                >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
                     <span className="font-bold text-white print:text-black text-sm">{exp.role}</span>
-                    <span className="font-mono text-xs text-sky-400 print:text-sky-700 font-semibold">{exp.period}</span>
+                    <span className="font-mono text-xs text-sky-400 print:text-sky-800 font-semibold">{exp.period}</span>
                   </div>
                   <p className="text-xs text-indigo-300 print:text-indigo-800 font-medium mb-2">
                     {exp.company} — {exp.location} ({exp.type})
@@ -159,8 +164,8 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
 
           {/* Education */}
-          <div>
-            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-700 font-mono flex items-center gap-1.5">
+          <div className="print-avoid-break">
+            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
               <GraduationCap className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
               <span>ประวัติการศึกษา (Education)</span>
             </h2>
@@ -180,15 +185,20 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
           </div>
 
-          {/* Skills Summary */}
-          <div>
-            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-700 font-mono">
+          {/* ================= PAGE 2 (Starts cleanly on Page 2 in Print) ================= */}
+
+          {/* Skills Summary (Forced to Page 2 in Print) */}
+          <div className="print-page-break print:pt-2">
+            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-3 text-indigo-400 print:text-indigo-800 font-mono">
               ทักษะความสามารถ (Skills &amp; Competencies)
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {skills.map((cat) => (
-                <div key={cat.title} className="p-3 rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-300">
-                  <p className="font-semibold text-slate-200 print:text-black text-xs mb-1">{cat.title}</p>
+                <div
+                  key={cat.title}
+                  className="p-3 rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-300 print-avoid-break"
+                >
+                  <p className="font-semibold text-slate-200 print:text-black text-xs mb-1.5">{cat.title}</p>
                   <p className="text-[11px] text-slate-400 print:text-slate-700 leading-relaxed">
                     {cat.skills.map((s) => s.name).join(", ")}
                   </p>
@@ -197,22 +207,26 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
           </div>
 
-          {/* Certifications & Achievements */}
-          <div>
-            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-2 text-indigo-400 print:text-indigo-700 font-mono flex items-center gap-1.5">
+          {/* Certifications & Achievements (on Page 2) */}
+          <div className="print-avoid-break mt-4">
+            <h2 className="font-bold text-white print:text-black text-xs uppercase tracking-wider mb-3 text-indigo-400 print:text-indigo-800 font-mono flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-amber-400 print:text-amber-700" />
               <span>ใบรับรองและผลงาน (Certifications &amp; Achievements)</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {certifications.map((cert, idx) => (
-                <div key={idx} className="p-2.5 rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-300">
+                <div
+                  key={idx}
+                  className="p-3 rounded-lg bg-slate-950/60 print:bg-slate-50 border border-slate-800 print:border-slate-300 print-avoid-break"
+                >
                   <p className="font-semibold text-white print:text-black text-xs">{cert.title}</p>
                   <p className="text-[10px] text-sky-400 print:text-sky-800 font-mono mt-0.5">{cert.issuer}</p>
-                  <p className="text-[10px] text-slate-400 print:text-slate-600 mt-0.5 leading-normal">{cert.description}</p>
+                  <p className="text-[10px] text-slate-400 print:text-slate-600 mt-1 leading-normal">{cert.description}</p>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
 
         {/* Modal Footer (Hidden in Print) */}
