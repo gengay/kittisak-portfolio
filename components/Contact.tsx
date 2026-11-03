@@ -36,6 +36,17 @@ export default function Contact({ onDownloadResume }: ContactProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
+  const isValidUuid = (value: string) => {
+    const normalized = value.trim();
+
+    return (
+      normalized.length === 36 &&
+      /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(
+        normalized
+      )
+    );
+  };
+
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email);
     setCopiedEmail(true);
@@ -51,11 +62,26 @@ export default function Contact({ onDownloadResume }: ContactProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSubmitted(false);
     setErrorMessage(null);
 
-    const accessKey =
-      process.env.NEXT_PUBLIC_WEB3FORMS_KEY ||
-      "af8fed6c-b086-4fcb-8558-18f574fde4fb";
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY?.trim();
+
+    if (!accessKey || accessKey === "your_web3forms_access_key_here") {
+      setErrorMessage(
+        "ยังไม่ได้ตั้งค่า Web3Forms API Key ให้ถูกต้องในไฟล์ .env หรือ .env.local แล้วรันแอปใหม่อีกครั้ง"
+      );
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!isValidUuid(accessKey)) {
+      setErrorMessage(
+        "Web3Forms API Key ที่ใช้ไม่ถูกต้อง กรุณาตรวจสอบว่าเป็น UUID ที่ถูกต้องจาก Web3Forms"
+      );
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
