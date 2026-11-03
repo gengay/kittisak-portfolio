@@ -58,24 +58,27 @@
   }
 }
 
-/* Dedicated Clean Print Styles */
+/* Dedicated Clean Print Styles with Guaranteed 2cm Margins */
 @media print {
   @page {
-    /* 2cm margin on all 4 sides (Top, Bottom, Left, Right) */
-    margin: 2cm;
+    /* 2cm (20mm) exact margin on Top, Bottom, Left, and Right */
+    margin: 20mm !important;
     size: A4 portrait;
   }
 
-  body {
+  html, body {
     background: #ffffff !important;
     color: #0f172a !important;
     overflow: visible !important;
     font-family: "Plus Jakarta Sans", "Prompt", -apple-system, BlinkMacSystemFont, sans-serif !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  /* Hide entire page structure to prevent duplicates */
+  /* Hide entire web page background */
   body > div > header,
   body > div > main,
   body > div > footer,
@@ -87,19 +90,21 @@
     overflow: hidden !important;
   }
 
-  /* Force page break before an element */
+  /* Force clean page break */
   .print-page-break {
     break-before: page !important;
     page-break-before: always !important;
+    margin-top: 0 !important;
+    padding-top: 4mm !important;
   }
 
-  /* Prevent card from being split across page boundaries */
+  /* Prevent card splitting */
   .print-avoid-break {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
 
-  /* Unconstrain modal wrapper so all pages print without cutoff */
+  /* Unconstrain modal wrapper */
   .resume-modal-backdrop {
     position: static !important;
     display: block !important;
@@ -136,12 +141,9 @@
     margin: 0 !important;
     border: none !important;
     display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
     overflow: visible !important;
     box-shadow: none !important;
-  }
-
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 }
