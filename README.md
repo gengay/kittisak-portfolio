@@ -59,7 +59,16 @@ cd "C:\Users\Geng AY\.gemini\antigravity\scratch\portfolio-resume"
 npm install
 ```
 
-### 2. รัน Local Development Server
+### 2. ตั้งค่า Web3Forms API Key
+ก่อนรันโปรเจกต์ ให้สร้างไฟล์ `.env.local` หรือแก้ไข `.env` แล้วใส่ key จริงจาก Web3Forms:
+
+```bash
+NEXT_PUBLIC_WEB3FORMS_KEY=your_real_web3forms_uuid_here
+```
+
+> หากยังคงเป็นค่า placeholder เช่น `your_web3forms_access_key_here` หรือ UUID ที่ไม่ถูกต้อง ฟอร์มส่งข้อความจะไม่สามารถส่งอีเมลได้
+
+### 3. รัน Local Development Server
 ```bash
 npm run dev
 ```
