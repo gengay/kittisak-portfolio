@@ -8,12 +8,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "กิตติศักดิ์ สัพโส (Kittisak Sapphaso) | IT Support & QA Portfolio",
+  title: "MR. Kittisak Sappaso (นายกิตติศักดิ์ สัพโส) | IT Support & QA Portfolio",
   description:
-    "เว็บพอร์ตโฟลิโอและเรซูเม่ออนไลน์ของ กิตติศักดิ์ สัพโส — ผู้เชี่ยวชาญด้าน IT Support, QA & Tester และ Team Lead Customer Service ประสบการณ์รวมกว่า 7 ปี พร้อมเริ่มงานทันที",
+    "เว็บพอร์ตโฟลิโอและเรซูเม่ออนไลน์ของ MR. Kittisak Sappaso (นายกิตติศักดิ์ สัพโส) — ผู้เชี่ยวชาญด้าน IT Support, QA & Tester และ Team Lead Customer Service ประสบการณ์รวมกว่า 7 ปี พร้อมเริ่มงานทันที",
   keywords: [
+    "Kittisak Sappaso",
     "กิตติศักดิ์ สัพโส",
-    "Kittisak Sapphaso",
     "IT Support",
     "QA Tester",
     "Software Testing",
@@ -24,18 +24,18 @@ export const metadata: Metadata = {
     "Requirement Gathering",
     "SLA Management",
   ],
-  authors: [{ name: "กิตติศักดิ์ สัพโส (Kittisak Sapphaso)" }],
+  authors: [{ name: "MR. Kittisak Sappaso" }],
   openGraph: {
-    title: "กิตติศักดิ์ สัพโส (Kittisak Sapphaso) | IT Support & QA Portfolio",
+    title: "MR. Kittisak Sappaso (นายกิตติศักดิ์ สัพโส) | IT Support & QA Portfolio",
     description:
       "ผู้เชี่ยวชาญด้าน IT Support, QA & Tester และ Team Lead Customer Service ประสบการณ์รวมกว่า 7 ปี พร้อมเริ่มงานทันที",
-    siteName: "Kittisak Sapphaso Portfolio",
+    siteName: "Kittisak Sappaso Portfolio",
     locale: "th_TH",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "กิตติศักดิ์ สัพโส | IT Support & QA Portfolio",
+    title: "MR. Kittisak Sappaso | IT Support & QA Portfolio",
     description:
       "ผู้เชี่ยวชาญด้าน IT Support, QA & Tester และ Team Lead Customer Service ประสบการณ์รวมกว่า 7 ปี",
   },

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, FileText, Send, Phone } from "lucide-react";
+import { Menu, X, FileText, Phone } from "lucide-react";
 import { portfolioData } from "@/data/portfolioData";
 
 interface NavbarProps {

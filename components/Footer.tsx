@@ -16,9 +16,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 text-xs text-slate-400 text-center sm:text-left">
-            <span>© {new Date().getFullYear()} {personal.name} ({personal.englishName}).</span>
+            <span>© {new Date().getFullYear()} {personal.englishName} ({personal.thaiName}).</span>
             <span className="hidden sm:inline">•</span>
-            <span>{personal.phone}</span>
+            <span>โทร {personal.phone}</span>
           </div>
 
           <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">

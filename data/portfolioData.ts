@@ -48,9 +48,10 @@ export interface CertificationItem {
 
 export const portfolioData = {
   personal: {
-    name: "กิตติศักดิ์ สัพโส",
-    englishName: "Kittisak Sapphaso (Geng)",
-    shortName: "KITTISAK S.",
+    name: "MR. Kittisak Sappaso",
+    englishName: "MR. Kittisak Sappaso",
+    thaiName: "นายกิตติศักดิ์ สัพโส (เก่ง)",
+    shortName: "MR. KITTISAK S.",
     initials: "KS",
     titles: [
       "IT Support & QA",
@@ -63,7 +64,7 @@ export const portfolioData = {
     currentProvince: "ขอนแก่น / กรุงเทพฯ (พร้อมย้าย)",
     phone: "095-304-4906",
     email: "gengkittisak@gmail.com",
-    github: "https://github.com",
+    github: "https://github.com/gengay",
     linkedin: "https://linkedin.com",
     resumeDownloadUrl: "#",
     statusText: "พร้อมเริ่มงานทันที (Available Immediately / Ready to Relocate to BKK & Remote)",

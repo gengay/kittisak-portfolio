@@ -224,7 +224,7 @@ export default function Contact({ onDownloadResume }: ContactProps) {
                 <div>
                   <h4 className="text-sm font-bold text-white">ดาวน์โหลดเรซูเม่ (Resume PDF)</h4>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    เปิดพรีวิวและดาวน์โหลดเอกสารประวัติการทำงานฉบับสมบูรณ์ของ กิตติศักดิ์ สัพโส
+                    เปิดพรีวิวและดาวน์โหลดเอกสารประวัติการทำงานฉบับสมบูรณ์ของ {personal.englishName} ({personal.thaiName})
                   </p>
                 </div>
               </div>

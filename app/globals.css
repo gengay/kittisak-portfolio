@@ -57,3 +57,74 @@
     text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   }
 }
+
+/* Dedicated Clean Print Styles */
+@media print {
+  @page {
+    margin: 12mm 14mm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    overflow: visible !important;
+    font-family: "Plus Jakarta Sans", "Prompt", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+
+  /* Hide entire page structure to prevent duplicates */
+  body > div > header,
+  body > div > main,
+  body > div > footer,
+  .print-hidden,
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Unconstrain modal wrapper so all pages print without cutoff */
+  .resume-modal-backdrop {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .resume-modal-dialog {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .resume-print-sheet {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    border: none !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

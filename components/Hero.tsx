@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import {
   ArrowDown,
   FileText,
-  Send,
   Phone,
   Mail,
   ShieldCheck,
@@ -35,19 +34,68 @@ export default function Hero({ onDownloadResume }: HeroProps) {
     return () => clearInterval(timer);
   }, [personal.titles.length]);
 
-  const floatingBadges = [
-    { name: "IT Support (7+ ปี)", icon: Headphones, color: "from-sky-500 to-blue-600" },
-    { name: "Software Testing & QA", icon: ShieldCheck, color: "from-indigo-600 to-purple-600" },
-    { name: "Team Lead & SLA Management", icon: Users, color: "from-blue-600 to-indigo-600" },
-    { name: "Remote Support (AnyDesk/TeamViewer)", icon: Monitor, color: "from-teal-500 to-emerald-600" },
-    { name: "Requirement Gathering", icon: Zap, color: "from-amber-500 to-orange-600" },
-    { name: "User Manual & Documentation", icon: DocumentIcon, color: "from-purple-500 to-pink-600" },
+  // 6 Core Tools/Competencies for the 3 / 2 / 1 Pyramid (Triangle) Layout
+  const toolsRow1 = [
+    {
+      name: "IT Support & Help Desk",
+      sub: "7+ Years Experience",
+      icon: Headphones,
+      gradient: "from-sky-500 via-blue-500 to-indigo-600",
+      accent: "text-sky-400",
+      borderGlow: "hover:border-sky-500/60 hover:shadow-sky-500/20",
+    },
+    {
+      name: "Software Testing & QA",
+      sub: "Manual Test & Test Cases",
+      icon: ShieldCheck,
+      gradient: "from-indigo-500 via-purple-500 to-pink-600",
+      accent: "text-indigo-400",
+      borderGlow: "hover:border-indigo-500/60 hover:shadow-indigo-500/20",
+    },
+    {
+      name: "Team Lead & SLA",
+      sub: "Management & 98%+ SLA",
+      icon: Users,
+      gradient: "from-blue-500 via-indigo-600 to-cyan-500",
+      accent: "text-cyan-400",
+      borderGlow: "hover:border-cyan-500/60 hover:shadow-cyan-500/20",
+    },
+  ];
+
+  const toolsRow2 = [
+    {
+      name: "Remote Support Tools",
+      sub: "AnyDesk & TeamViewer",
+      icon: Monitor,
+      gradient: "from-emerald-500 via-teal-500 to-sky-600",
+      accent: "text-emerald-400",
+      borderGlow: "hover:border-emerald-500/60 hover:shadow-emerald-500/20",
+    },
+    {
+      name: "Requirement Gathering",
+      sub: "Client & Dev Coordination",
+      icon: Zap,
+      gradient: "from-amber-500 via-orange-500 to-red-500",
+      accent: "text-amber-400",
+      borderGlow: "hover:border-amber-500/60 hover:shadow-amber-500/20",
+    },
+  ];
+
+  const toolsRow3 = [
+    {
+      name: "User Manual & System Documentation",
+      sub: "SOPs, Guides & EPUB 3 Digital Media Standard",
+      icon: DocumentIcon,
+      gradient: "from-purple-500 via-indigo-500 to-sky-500",
+      accent: "text-purple-400",
+      borderGlow: "hover:border-purple-500/60 hover:shadow-purple-500/20",
+    },
   ];
 
   return (
     <section
       id="hero"
-      className="relative min-h-[95vh] flex items-center justify-center pt-28 pb-16 overflow-hidden"
+      className="relative min-h-[95vh] flex flex-col justify-center pt-28 pb-16 overflow-hidden"
     >
       {/* Background Glowing Gradients */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-sky-500/15 via-indigo-500/10 to-purple-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -58,7 +106,8 @@ export default function Hero({ onDownloadResume }: HeroProps) {
       <div className="absolute inset-0 bg-grid opacity-[0.16] pointer-events-none -z-10 [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_80%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Top 2-Column Hero: Text & Profile Photo */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16">
           
           {/* Left Column: Text & CTAs (7 cols on lg) */}
           <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
@@ -73,15 +122,16 @@ export default function Hero({ onDownloadResume }: HeroProps) {
               </span>
             </div>
 
-            {/* Name & Target Role */}
+            {/* Main Name: English on Top */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-              สวัสดีครับ, ผม{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-200 to-cyan-300 drop-shadow-sm">
-                {personal.name}
+                {personal.englishName}
               </span>
             </h1>
-            <p className="text-base sm:text-lg font-mono text-slate-400 mb-5">
-              {personal.englishName}
+
+            {/* Thai Name & Nickname Below */}
+            <p className="text-xl sm:text-2xl font-bold text-slate-200 mb-5 font-sans">
+              {personal.thaiName}
             </p>
 
             {/* Dynamic Target Role pill */}
@@ -178,7 +228,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                 <div className="relative w-64 sm:w-72 lg:w-80 h-80 sm:h-96 lg:h-[420px] rounded-[1.85rem] overflow-hidden bg-slate-950">
                   <img
                     src="/profile.jpg"
-                    alt="กิตติศักดิ์ สัพโส (Kittisak Sapphaso)"
+                    alt={`${personal.englishName} (${personal.thaiName})`}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Subtle gradient vignette at the bottom */}
@@ -187,7 +237,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                   {/* Bottom Image Caption Overlay */}
                   <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/85 backdrop-blur-md border border-slate-800/80 text-left">
                     <p className="text-xs font-bold text-white flex items-center justify-between">
-                      <span>{personal.name}</span>
+                      <span>{personal.englishName}</span>
                       <span className="text-[10px] font-mono text-emerald-400 font-normal">Active</span>
                     </p>
                     <p className="text-[11px] text-sky-400 font-mono mt-0.5">
@@ -223,28 +273,105 @@ export default function Hero({ onDownloadResume }: HeroProps) {
 
         </div>
 
-        {/* Floating Tech & Competency Badges Strip at bottom */}
-        <div className="border-t border-slate-800/80 pt-10 mt-14">
-          <p className="text-xs uppercase tracking-widest text-slate-400 font-mono mb-4 text-center lg:text-left">
-            Core Competencies &amp; Hands-on Tools
-          </p>
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            {floatingBadges.map((badge, idx) => {
-              const Icon = badge.icon;
-              return (
-                <div
-                  key={idx}
-                  className="group relative inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800/90 hover:border-sky-500/40 hover:bg-slate-800/80 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10 cursor-default"
-                >
-                  <div className={`p-1.5 rounded-lg bg-gradient-to-tr ${badge.color} text-white shadow-sm`}>
-                    <Icon className="w-3.5 h-3.5" />
+        {/* 4. Large Interactive Tools & Competencies Pyramid (Triangle Layout: 3 / 2 / 1) */}
+        <div className="border-t border-slate-800/80 pt-12 mt-6">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>CORE TECHNICAL COMPETENCIES</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              เครื่องมือ &amp; ความเชี่ยวชาญหลัก (Tools &amp; Capabilities)
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+              ทักษะเชิงเทคนิคและการบริหารจัดการทีมที่พร้อมสร้างผลลัพธ์ทันที
+            </p>
+          </div>
+
+          {/* Pyramid Container */}
+          <div className="flex flex-col items-center gap-4 sm:gap-5 max-w-5xl mx-auto">
+            
+            {/* Row 1: 3 Items (Top Layer) */}
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+              {toolsRow1.map((tool, idx) => {
+                const Icon = tool.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={`group relative p-5 sm:p-6 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-slate-800 transition-all duration-300 hover:-translate-y-1.5 shadow-lg shadow-black/30 ${tool.borderGlow}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className={`p-3.5 rounded-2xl bg-gradient-to-tr ${tool.gradient} text-white shadow-md group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                        <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-sky-300 transition-colors">
+                          {tool.name}
+                        </h3>
+                        <p className={`text-xs font-mono font-medium mt-1 ${tool.accent}`}>
+                          {tool.sub}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <span className="text-xs font-medium text-slate-300 group-hover:text-white transition-colors">
-                    {badge.name}
-                  </span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* Row 2: 2 Items (Middle Layer) */}
+            <div className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+              {toolsRow2.map((tool, idx) => {
+                const Icon = tool.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={`group relative p-5 sm:p-6 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-slate-800 transition-all duration-300 hover:-translate-y-1.5 shadow-lg shadow-black/30 ${tool.borderGlow}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className={`p-3.5 rounded-2xl bg-gradient-to-tr ${tool.gradient} text-white shadow-md group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                        <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors">
+                          {tool.name}
+                        </h3>
+                        <p className={`text-xs font-mono font-medium mt-1 ${tool.accent}`}>
+                          {tool.sub}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Row 3: 1 Item (Bottom Point of Triangle) */}
+            <div className="w-full max-w-xl">
+              {toolsRow3.map((tool, idx) => {
+                const Icon = tool.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={`group relative p-5 sm:p-6 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-slate-800 transition-all duration-300 hover:-translate-y-1.5 shadow-lg shadow-black/30 ${tool.borderGlow}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className={`p-3.5 rounded-2xl bg-gradient-to-tr ${tool.gradient} text-white shadow-md group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                        <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                          {tool.name}
+                        </h3>
+                        <p className={`text-xs font-mono font-medium mt-1 ${tool.accent}`}>
+                          {tool.sub}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
         </div>
       </div>
